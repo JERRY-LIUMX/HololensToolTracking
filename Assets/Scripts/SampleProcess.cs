@@ -16,6 +16,7 @@ public class SampleProcess : MonoBehaviour
     private byte[] message;
     // Start is called before the first frame update
     public GameObject[] tools;
+    public Material ellipsoidMaterial;
     public int tool_count
         {
             get { return tools.Length; }
@@ -29,6 +30,37 @@ public class SampleProcess : MonoBehaviour
         SubBuffer = SubNode.GetComponent<DataBuffer>();
         //Find the debugconsole to print the information while in HoloLens.
         debugConsole = GameObject.FindObjectOfType<DebugConsole>();
+    }
+
+    private void ScaleEllipsoid(GameObject sphere, Vector3 normalizedVector)
+    {
+        // Normalize and scale the vector
+        // normalizedVector = unnormalizedVector / 0.013f;
+
+        // Scale the assigned sphere
+        sphere.transform.localScale = new Vector3(normalizedVector.x, normalizedVector.y, normalizedVector.z);
+
+        // Apply material if available
+        if (ellipsoidMaterial != null)
+        {
+            Renderer renderer = sphere.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.material = ellipsoidMaterial;
+            }
+        }
+    }
+
+    private void VisualizeUncertaintyOf(GameObject parent, Vector3 uncertainty)
+    {
+            string sphereName = "Uncertainty";
+            Transform found = parent.transform.Find(sphereName);
+
+            if (found == null)
+            {
+                return;
+            }
+            ScaleEllipsoid(found.gameObject,uncertainty);
     }
 
     private float[] ObtainToolCoordinates(GameObject tool)
@@ -46,8 +78,9 @@ public class SampleProcess : MonoBehaviour
 
     private void UpdateToolCoordinates(GameObject tool)
     {
-        byte[] poseMessage = SubBuffer.GetMessage(tool.name);
+        byte[] poseMessage = SubBuffer.PopMessage(tool.name);
         string poseString = Encoding.UTF8.GetString(poseMessage);
+        Debug.Log(poseString);
         // debugConsole.Log(poseString.Split(',').ToString());
         if (tool.tag == "InTrack" || poseString.Split(',').Length < 7)
         {   // do not update when the message is not complete
@@ -57,6 +90,8 @@ public class SampleProcess : MonoBehaviour
         float[] toolCoordinates = poseString.Split(',').Select(float.Parse).ToArray();
         Vector3 position = new Vector3(toolCoordinates[0], toolCoordinates[1], toolCoordinates[2]);
         Quaternion rotation = new Quaternion(toolCoordinates[3], toolCoordinates[4], toolCoordinates[5], toolCoordinates[6]);
+        Vector3 uncertainty = new Vector3(toolCoordinates[8], toolCoordinates[9], toolCoordinates[10]);
+        VisualizeUncertaintyOf(tool,uncertainty);
         // tool.transform.localPosition = position;
         // tool.transform.localRotation = rotation;
         tool.transform.position = position;
@@ -74,7 +109,7 @@ public class SampleProcess : MonoBehaviour
             string toolPoseString = string.Join(",", tools_coordinates.Select(f => f.ToString("F4")));
             if (tools[i].tag != "InTrack")
             {
-                toolPoseString += "," + "0";
+                toolPoseString += "," + "1";
             }
             else
             {

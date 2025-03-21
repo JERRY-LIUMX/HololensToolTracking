@@ -408,22 +408,22 @@ PrefabInstance:
     - target: {fileID: 7147247773256667186, guid: 480b85876f38a2043baa16be4f66adec,
         type: 3}
       propertyPath: PubFrequency
-      value: 300
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7147247773256667186, guid: 480b85876f38a2043baa16be4f66adec,
         type: 3}
       propertyPath: SubFrequency
-      value: 300
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7147247773256667186, guid: 480b85876f38a2043baa16be4f66adec,
         type: 3}
       propertyPath: PubSocketBufferSize
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7147247773256667186, guid: 480b85876f38a2043baa16be4f66adec,
         type: 3}
       propertyPath: SubSockerBufferSize
-      value: 1000
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 480b85876f38a2043baa16be4f66adec, type: 3}
@@ -963,6 +963,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  ellipsoidMaterial: {fileID: 2100000, guid: 659e8af5db3e79c44a884d8a92579859, type: 2}
   topics:
   - tool_1
   - tool_2

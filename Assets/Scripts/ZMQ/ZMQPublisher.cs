@@ -34,8 +34,14 @@ public class ZMQPublisher
     public void EnqueueMessage()
     {
         messageQueue.Clear();
-        foreach (var item in databuffer.topicMsg)
+        // foreach (var item in databuffer.topicMsg)
+        // {
+        //     messageQueue.Enqueue((item.Key, item.Value));
+        // }
+        //Alternatively, use Pop(), which will clear all data in databuffer each time.
+        while(databuffer.topicMsg.Count > 0)
         {
+            var item = databuffer.Pop();
             messageQueue.Enqueue((item.Key, item.Value));
         }
     }

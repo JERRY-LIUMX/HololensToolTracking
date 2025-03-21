@@ -12,7 +12,7 @@ public class ZMQSubscriberHelper : MonoBehaviour
 
     public (string[],string[]) GetSubscriberInfo()
     {
-        string[] SockerSettings = new string[2] { IP.text[..^1], Port.text[..^1] };
+        string[] SockerSettings = new string[2] { "10.0.0.41", "5589" };
         string[] Topics = Topic.text[..^1].Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 /*  
         string[] info = new string[SockerSettings.Length + Topics.Length];
