@@ -54,6 +54,7 @@ public class ZMQPublisher
             lastOperationTime = DateTime.Now;
             while (messageQueue.TryDequeue(out var message))
             {
+                e.Socket.SendMoreFrame(Encoding.UTF8.GetBytes(message.Topic)).SendFrame(message.Message);
                 try
                 {
                     e.Socket.SendMoreFrame(Encoding.UTF8.GetBytes(message.Topic)).SendFrame(message.Message);

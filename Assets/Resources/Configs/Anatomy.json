@@ -1,6 +1,6 @@
 {
-  "identifier": "phantom",
-  "path": "Prefabs/phantom",
+  "identifier": "Anatomy",
+  "path": "Prefabs/Anatomy",
   "count": 4,
   "scale": 0.013,
   "fiducials": [

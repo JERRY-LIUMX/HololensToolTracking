@@ -9,6 +9,6 @@ public class ZMQPublisherHelper : MonoBehaviour
 
     public string[] GetPublisherInfo()
     {
-       return new string[] { "5588" };
+       return new string[] { "5586" };
     }
 }

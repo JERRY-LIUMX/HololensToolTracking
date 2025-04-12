@@ -12,7 +12,7 @@ namespace IRToolTrack
     {
         public string Config_Resources_Path;
         public float indicator_y_offset = 0.05f;
-        public bool use_indicator;
+        public bool use_indicator = false;
 
         void Start()
         {
@@ -70,7 +70,7 @@ namespace IRToolTrack
                 markerInstance.name = config.identifier;
 
                 Transform pivotTransform = markerInstance.transform.Find("model");
-                pivotTransform.localPosition = new Vector3(config.model.x, config.model.y, config.model.z);
+                pivotTransform.localPosition = new Vector3(config.model.x, config.model.y, -1 * config.model.z);
                 Quaternion quat = Quaternion.Euler(config.model.rx, config.model.ry, config.model.rz);
                 pivotTransform.localRotation = quat;
                 if (use_indicator)

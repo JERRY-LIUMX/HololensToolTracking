@@ -1,6 +1,6 @@
 {
-  "identifier": "artool",
-  "path": "Prefabs/artool",
+  "identifier": "Probe",
+  "path": "Prefabs/Probe",
   "count": 4,
   "scale": 0.013,
   "fiducials": [

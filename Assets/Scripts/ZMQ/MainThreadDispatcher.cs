@@ -5,18 +5,12 @@ public class MainThreadDispatcher : MonoBehaviour
 {
     private static readonly Queue<System.Action> ExecutionQueue = new Queue<System.Action>();
     private static MainThreadDispatcher _instance;
-
-/*    public static MainThreadDispatcher Instance()
-    {
-        if (_instance == null)
-        {
-            _instance = new MainThreadDispatcher();
-        }
-        return _instance;
-    }*/
+    private const int MaxActionsPerFrame = 120;
 
     public static void Enqueue(System.Action action)
     {
+        if (action == null) return;
+
         lock (ExecutionQueue)
         {
             ExecutionQueue.Enqueue(action);
@@ -25,18 +19,22 @@ public class MainThreadDispatcher : MonoBehaviour
 
     void Update()
     {
-        while (ExecutionQueue.Count > 0)
+        int actionsProcessed = 0;
+
+        while (actionsProcessed < MaxActionsPerFrame)
         {
             System.Action action = null;
+
             lock (ExecutionQueue)
             {
-                if (ExecutionQueue.Count > 0)
-                {
-                    action = ExecutionQueue.Dequeue();
-                }
+                if (ExecutionQueue.Count == 0)
+                    break;
+
+                action = ExecutionQueue.Dequeue();
             }
 
             action?.Invoke();
+            actionsProcessed++;
         }
     }
 }

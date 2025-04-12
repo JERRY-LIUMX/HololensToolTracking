@@ -67,8 +67,9 @@ public class ZMQSubscriber
             {
                 receivedTopic = Encoding.UTF8.GetString(buffer[0]);
                 receivedMessage = buffer[1];
+                ProcessMessage(receivedTopic, receivedMessage);
             }
-            MainThreadDispatcher.Enqueue(() => ProcessMessage(receivedTopic, receivedMessage));
+            // MainThreadDispatcher.Enqueue(() => ProcessMessage(receivedTopic, receivedMessage));
             lastOperationTime = DateTime.Now;
         }
     }

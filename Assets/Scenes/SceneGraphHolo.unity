@@ -133,12 +133,12 @@ PrefabInstance:
     - target: {fileID: 2648170717604440146, guid: 36953faad8e61f440875d99f2c775f43,
         type: 3}
       propertyPath: m_Text
-      value: 5589
+      value: 5587
       objectReference: {fileID: 0}
     - target: {fileID: 2648170718183195752, guid: 36953faad8e61f440875d99f2c775f43,
         type: 3}
       propertyPath: m_Text
-      value: artool;reference_1;phantom;
+      value: Probe;Anatomy;StaticRef;
       objectReference: {fileID: 0}
     - target: {fileID: 2648170718386304434, guid: 36953faad8e61f440875d99f2c775f43,
         type: 3}
@@ -148,7 +148,7 @@ PrefabInstance:
     - target: {fileID: 7765440369400264880, guid: 36953faad8e61f440875d99f2c775f43,
         type: 3}
       propertyPath: Frequency
-      value: 300
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7765440369400264882, guid: 36953faad8e61f440875d99f2c775f43,
         type: 3}
@@ -223,17 +223,17 @@ PrefabInstance:
     - target: {fileID: 8559570814470509267, guid: 36953faad8e61f440875d99f2c775f43,
         type: 3}
       propertyPath: m_text
-      value: "5580\u200B"
+      value: "5587\u200B"
       objectReference: {fileID: 0}
     - target: {fileID: 8559570815290838835, guid: 36953faad8e61f440875d99f2c775f43,
         type: 3}
       propertyPath: m_text
-      value: "10.203.150.51\n\u200B"
+      value: "\u200B"
       objectReference: {fileID: 0}
     - target: {fileID: 8559570815452004073, guid: 36953faad8e61f440875d99f2c775f43,
         type: 3}
       propertyPath: m_text
-      value: "artool;reference_1;phantom\u200B"
+      value: "Probe;Anatomy;StaticRef;\u200B"
       objectReference: {fileID: 0}
     - target: {fileID: 8559570815613293994, guid: 36953faad8e61f440875d99f2c775f43,
         type: 3}
@@ -408,22 +408,22 @@ PrefabInstance:
     - target: {fileID: 7147247773256667186, guid: 480b85876f38a2043baa16be4f66adec,
         type: 3}
       propertyPath: PubFrequency
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7147247773256667186, guid: 480b85876f38a2043baa16be4f66adec,
         type: 3}
       propertyPath: SubFrequency
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7147247773256667186, guid: 480b85876f38a2043baa16be4f66adec,
         type: 3}
       propertyPath: PubSocketBufferSize
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7147247773256667186, guid: 480b85876f38a2043baa16be4f66adec,
         type: 3}
       propertyPath: SubSockerBufferSize
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 480b85876f38a2043baa16be4f66adec, type: 3}
@@ -443,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 600078579746697170, guid: 5577aa950a5f35243a8c02ff9b21b8b2,
         type: 3}
       propertyPath: m_Text
-      value: 5588
+      value: 5586
       objectReference: {fileID: 0}
     - target: {fileID: 5140783838918194900, guid: 5577aa950a5f35243a8c02ff9b21b8b2,
         type: 3}
@@ -563,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 6510636313537467731, guid: 5577aa950a5f35243a8c02ff9b21b8b2,
         type: 3}
       propertyPath: m_text
-      value: "5581\u200B"
+      value: "5586\u200B"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5577aa950a5f35243a8c02ff9b21b8b2, type: 3}
@@ -963,7 +963,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  ellipsoidMaterial: {fileID: 2100000, guid: 659e8af5db3e79c44a884d8a92579859, type: 2}
+  ellipsoidMaterialTrue: {fileID: 2100000, guid: a5e5271d054401e4da0f3119ed3c8e0f,
+    type: 2}
+  ellipsoidMaterialFalse: {fileID: 2100000, guid: 659e8af5db3e79c44a884d8a92579859,
+    type: 2}
+  ellipsoidMaterialSTTAR: {fileID: 2100000, guid: 93d5558b2efc66a419f08ae0e8b984ff,
+    type: 2}
   topics:
   - tool_1
   - tool_2
@@ -1110,7 +1115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Config_Resources_Path: Configs
   indicator_y_offset: 0.03
-  use_indicator: 1
+  use_indicator: 0
 --- !u!1 &2011384724
 GameObject:
   m_ObjectHideFlags: 0
